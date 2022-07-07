@@ -1,0 +1,8 @@
+spring:
+  quartz:
+    job-store-type: memory
+
+logging:
+  level:
+    org.springframework.scheduling.quartz: DEBUG
+    org.quartz: DEBUG
