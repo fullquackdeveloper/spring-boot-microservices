@@ -16,9 +16,12 @@ public class LoggingGlobalPreFilter implements GlobalFilter {
 
         ServerHttpRequest request = exchange.getRequest();
         log.info("Request path = " + request.getPath());
-
         request.getHeaders().forEach((k, v) -> log.info(k + ": " + v));
 
-        return chain.filter(exchange);
+        ServerHttpRequest mutatedRequest =
+                exchange.getRequest().mutate().header("x-custom", "x-custom-value").build();
+        ServerWebExchange mutatedExchange = exchange.mutate().request(mutatedRequest).build();
+
+        return chain.filter(mutatedExchange);
     }
 }
