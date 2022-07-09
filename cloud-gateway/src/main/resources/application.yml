@@ -1,9 +1,12 @@
 server:
   port: 9001
 
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
 spring:
-  application:
-    name: cloud-gateway
   cloud:
     gateway:
       routes:
@@ -13,7 +16,3 @@ spring:
             - Path=/api-consumer/**
           filters:
             - RewritePath=/api-consumer/(?<segment>.*), /$\{segment}
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka/
