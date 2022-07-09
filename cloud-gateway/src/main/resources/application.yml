@@ -18,3 +18,8 @@ spring:
             - Path=/api-consumer/**
           filters:
             - RewritePath=/api-consumer/(?<segment>.*),/$\{segment}
+
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway: trace
