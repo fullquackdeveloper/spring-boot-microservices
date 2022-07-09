@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: quartz-service
   quartz:
     job-store-type: memory
 
